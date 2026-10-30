@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Football Tactics Test Sim</title>
+  <link rel="stylesheet" href="css/style.css?v=17" />
+</head>
+<body>
+  <div id="errbar" style="display:none;background:#7f1d1d;color:#fecaca;padding:8px 14px;font:13px/1.4 system-ui;white-space:pre-wrap;"></div>
+  <header class="topbar">
+    <h1>Football Tactics <span class="accent">Test Sim</span></h1>
+    <div class="topbar-opts">
+      <label><input type="checkbox" id="toggleResp" checked /> Show responsibilities on pitch</label>
+      <label><input type="checkbox" id="toggleWeather" /> Bad weather</label>
+      <a href="https://gorstak.eu" target="_blank" rel="noopener">gorstak.eu</a>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel" id="panelA"></section>
+
+    <section class="center">
+      <div class="scoreboard" id="scoreboard">
+        <div class="sb-team sb-a">
+          <span class="sb-name">Team A</span>
+          <span class="sb-eff" id="sb-eff-a">standard</span>
+        </div>
+        <div class="sb-score">
+          <span id="sb-score">0 – 0</span>
+          <span class="sb-clock" id="sb-clock">0'</span>
+        </div>
+        <div class="sb-team sb-b">
+          <span class="sb-name">Team B</span>
+          <span class="sb-eff" id="sb-eff-b">standard</span>
+        </div>
+      </div>
+
+      <canvas id="pitch" width="900" height="600"></canvas>
+
+      <div class="match-controls">
+        <button id="btnPlay" class="btn btn-accent">▶ Play match</button>
+        <button id="btnPause" class="btn" disabled>⏸ Pause</button>
+        <button id="btnReset" class="btn" disabled>⟲ Reset</button>
+        <label class="speed">Speed
+          <select id="matchSpeed">
+            <option value="400">Slow</option>
+            <option value="150" selected>Normal</option>
+            <option value="40">Fast</option>
+            <option value="0">Instant</option>
+          </select>
+        </label>
+        <label class="seedwrap">Seed
+          <input type="number" id="matchSeed" placeholder="random" />
+        </label>
+      </div>
+
+      <div class="match-stats" id="match-stats"></div>
+      <div class="feed" id="feed"></div>
+
+      <div id="timeline"></div>
+      <p class="hint">
+        Team A attacks right, Team B attacks left. Before kickoff the pitch shows
+        each player's position, role (duty) and — per your guide's rule 8 tables —
+        resolved responsibility. Hit <strong>Play match</strong> for an animated
+        90 minutes: players move, the ball is passed and shot, and set pieces
+        (throw-ins, corners, goal kicks) play out. The result is decided by the
+        guide-based engine (rule 6 phase mentality, rule 5 spots, rule 7
+        modifiers); the animation just plays it out. Same seed = same match.
+      </p>
+    </section>
+
+    <section class="panel" id="panelB"></section>
+  </main>
+
+  <!-- Data + engine (order matters). ?v= is bumped each deploy to bust cache. -->
+  <script src="js/formations.js?v=17"></script>
+  <script src="js/roles.js?v=17"></script>
+  <script src="js/responsibilities.js?v=17"></script>
+  <script src="js/responsibilities-data2.js?v=17"></script>
+  <script src="js/engine.js?v=17"></script>
+  <script src="js/match.js?v=17"></script>
+  <script src="js/pitch.js?v=17"></script>
+  <script src="js/animator.js?v=17"></script>
+  <script src="js/tactics.js?v=17"></script>
+  <script src="js/app.js?v=17"></script>
+</body>
+</html>

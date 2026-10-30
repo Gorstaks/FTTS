@@ -1,0 +1,30 @@
+{
+  "mentality_by_triangle": {
+    "DMMCAMC": "attacking",
+    "MCAMC": "control",
+    "DMAMC": "standard",
+    "DMMC": "counter",
+    "MC": "defensive"
+  },
+  "fluidity_by_missing_lines": {
+    "0": "highly structured",
+    "1": "structured",
+    "2": "flexible",
+    "3": "fluid",
+    "4": "very fluid"
+  },
+  "fluidity_meaning": {
+    "highly structured": "players play assigned roles",
+    "structured": "players play assigned roles and duties",
+    "flexible": "players play assigned duties, but can bypass role",
+    "fluid": "players can bypass role and duty",
+    "very fluid": "players can bypass role and duty and mentality"
+  },
+  "support_duties": {
+    "very fluid": [8, 9],
+    "fluid": [6, 7],
+    "flexible": [4, 5],
+    "structured": [2, 3],
+    "highly structured": [0, 1]
+  }
+}
