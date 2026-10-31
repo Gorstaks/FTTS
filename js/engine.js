@@ -267,10 +267,10 @@
       w.push({ level: 'info', text:
         'Playing more defensively reduces your shots — you will need better finishing.' });
     }
-    // 7h: more fluid and more defensive => better form.
-    if (FLUID_LEVEL[cfg.fluidity] >= FLUID_LEVEL['fluid'] && mLvl <= MENT_LEVEL.counter) {
+    // 7h: more fluid and more aggressive => better form.
+    if (FLUID_LEVEL[cfg.fluidity] >= FLUID_LEVEL['fluid'] && mLvl >= MENT_LEVEL.control) {
       w.push({ level: 'good', text:
-        'More fluid and more defensive tends to yield better form.' });
+        'More fluid and more aggressive tends to yield better form.' });
     }
     // 7d: both teams same => aggressive favors home, defensive favors away.
     if (opts.sameAsOpponent) {

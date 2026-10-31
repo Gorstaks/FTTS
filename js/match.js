@@ -13,7 +13,7 @@
  *     => cards/injuries), 7c (structured => worse decisions), 7d (mirror match
  *     => aggressive favours home / defensive favours away), 7e (bad weather
  *     favours aggression), 7g (defensive => fewer shots, needs better
- *     finishing), 7h (fluid+defensive => better form), 7i/7j (flavour).
+ *     finishing), 7h (fluid+aggressive => better form), 7i/7j (flavour).
  *   - Shape: attacker & defender counts, and support-duty balance.
  *
  * WHAT IS MODELLED (assumptions — the guide gives inputs, not the math):
@@ -82,7 +82,7 @@
     // 'control' get a small penalty; aggressive teams unaffected/bonus).
     weatherAggressionBonus: 0.06,
 
-    // Rule 7h: fluid + defensive => better form (small all-round lift).
+    // Rule 7h: fluid + aggressive => better form (small all-round lift).
     formBonus: 0.05,
 
     // Rule 7c: structured/highly structured => worse decisions (small quality
@@ -161,8 +161,8 @@
     // Rule 7e: bad weather favours aggression; passive teams create less.
     if (opts.badWeather && eLvl < MENT.control) shots *= (1 - TUNING.weatherAggressionBonus);
     if (opts.badWeather && eLvl >= MENT.control) shots *= (1 + TUNING.weatherAggressionBonus * 0.5);
-    // Rule 7h: fluid + defensive => better form.
-    if (att.fluidLvl >= FLUID['fluid'] && att.mentLvl <= MENT.counter) shots *= (1 + TUNING.formBonus);
+    // Rule 7h: fluid + aggressive => better form.
+    if (att.fluidLvl >= FLUID['fluid'] && att.mentLvl >= MENT.control) shots *= (1 + TUNING.formBonus);
     // Home advantage + rule 7d mirror.
     if (att.home) shots *= (1 + TUNING.homeAdvantage);
     if (opts.mirror) {
